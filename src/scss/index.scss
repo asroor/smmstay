@@ -1,0 +1,342 @@
+/*------------------------------------
+[Master Stylesheet]
+
+Project:	smmstay
+Version:	1.0.0
+Primary user: smmstay
+------------------------------------*/
+
+/* ----------------------------------
+[Table of contents]
+
+1.	Fonts
+2.	Common styles
+3.	Header
+4.	Home
+*.	Responsive
+------------------------------------*/
+
+/* ==================================
+	Font
+/* =================================*/
+// @import '_fonts.scss';
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+/* ==================================
+	Common styles
+/* =================================*/
+
+
+
+:root {
+	--manrope: 'Manrope';
+	--bg-dark: #0D0608;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	outline: none;
+	text-decoration: none;
+	transition: 0.3s all ease;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+html,
+body {
+	height: 100%;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--manrope);
+	font-weight: 400;
+	letter-spacing: normal;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	background-color: var(--bg-dark);
+}
+
+a,
+button {
+	cursor: pointer;
+}
+
+.wrapper {
+	overflow: hidden;
+}
+
+.container {
+	width: 100%;
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+.bs-btn {
+	padding: 1.12px;
+	border-radius: 48px;
+	background: linear-gradient(180deg, #FFC0DE 0%, #F0518A 100%);
+	display: inline-block;
+	width: fit-content;
+
+	.bg {
+		background: linear-gradient(352deg, #EE276E 50.6%, #FFC0DE 217.46%);
+		display: flex;
+		align-items: center;
+		column-gap: 5px;
+		padding: 10px 20px;
+		border-radius: 48px;
+		box-shadow: 0px 2px 25px 0px rgba(255, 39, 108, 0.25), 0px 2px 55px 0px rgba(255, 39, 108, 0.25);
+
+		span {
+			color: #FFF;
+			font-size: 14px;
+			font-weight: 600;
+			line-height: 24px;
+			width: fit-content;
+		}
+	}
+
+}
+
+.title-block {
+	text-align: center;
+
+	h1 {
+		display: inline-block;
+		background: linear-gradient(89deg, rgba(0, 0, 0, 0.00) 29.17%, rgba(0, 0, 0, 0.55) 100%), #FFF;
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		font-size: 54px;
+		font-weight: 600;
+		line-height: 60px;
+		letter-spacing: -2px;
+	}
+
+	h4 {
+		color: #5E697F;
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 30px;
+	}
+}
+
+.liner-txt-400 {
+	position: relative;
+	display: inline;
+	background: linear-gradient(89deg, rgba(0, 0, 0, 0.00) 29.17%, rgba(0, 0, 0, 0.55) 100%), #FFF;
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: white;
+
+	&::before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+}
+
+.eff-txt {
+	position: relative;
+	padding: 0 20px;
+
+	/* Pink gradient */
+	background: radial-gradient(31.55% 121.43% at 72.59% 121.56%, #FFF 0%, rgba(255, 255, 255, 0.00) 100%), linear-gradient(0deg, #FF276C 0%, #FF276C 100%), linear-gradient(0deg, #FFF 0%, #FFF 100%), linear-gradient(89deg, rgba(0, 0, 0, 0.00) 29.17%, rgba(0, 0, 0, 0.55) 100%), #FFF;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: #ffffff;
+
+	&::before {
+		max-height: 97.368px;
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: calc(50% + 5px);
+		left: 50%;
+		transform: translate(-50%, -50%);
+		border: 2.351px solid #FF276C;
+	}
+
+	.detal {
+		position: absolute;
+		width: 8.342px;
+		height: 8.342px;
+		flex-shrink: 0;
+		background-color: white;
+		border: 2px solid rgba(255, 39, 108, 1);
+
+		&:first-child {
+			top: 19.5px;
+			left: -5px;
+		}
+
+		&:nth-child(2) {
+			bottom: 9.5px;
+			left: -5px;
+		}
+
+		&:nth-child(3) {
+			bottom: 9.5px;
+			right: -5px;
+		}
+
+		&:last-child {
+			top: 19.5px;
+			right: -5px;
+		}
+	}
+}
+
+/* ====================
+	Header
+=====================*/
+
+header {
+	padding: 30px 0;
+
+	.header-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+}
+
+.nav-links {
+	display: flex;
+	align-items: center;
+	column-gap: 40px;
+}
+
+.nav-links__item {
+	a {
+		color: #FFF;
+		font-size: 14px;
+		font-weight: 600;
+		line-height: 24px;
+		letter-spacing: -0.42px;
+	}
+}
+
+
+/*=======================
+	Home start
+======================*/
+
+.btn-title {
+	background: linear-gradient(180deg, rgb(76 76 76 / 25%) 0, rgba(175, 175, 175, 0) 100%);
+	width: fit-content;
+	margin: 0 auto;
+	background-blend-mode: overlay;
+	border-radius: 100px;
+	padding: 1.12px;
+	padding-bottom: 0;
+
+	h4 {
+		z-index: 5;
+		color: #ffffff;
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 26px;
+		letter-spacing: -0.32px;
+		padding: 6px 14px;
+		border-radius: 100px;
+		background: linear-gradient(180deg, rgb(0 0 0 / 40%) 0, rgba(175, 175, 175, 0) 100%);
+	}
+}
+
+.home-wrapper {
+	padding: 120px 0 94px 0;
+	text-align: center;
+	color: #FFF;
+
+	h1 {
+		font-size: 100px;
+		font-weight: 600;
+		line-height: 120px;
+		letter-spacing: -5px;
+	}
+
+	h3 {
+		color: #3D3D3D;
+		font-size: 22px;
+		font-weight: 400;
+		line-height: 36px;
+	}
+}
+
+.home-btns {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	column-gap: 24px;
+	margin-top: 20px;
+
+	.home-btn:last-child {
+		padding: 16px 38px;
+		border-radius: 48px;
+		border: 2px solid #3D3D3D;
+		color: #3D3D3D;
+		font-size: 24px;
+		font-weight: 400;
+		line-height: 38px;
+
+		&:hover {
+			border-color: white;
+			color: white;
+		}
+	}
+}
+
+.home-btn {
+	padding: 2px;
+
+	.bg {
+		height: 74px;
+		padding: 0 38px;
+
+		span {
+			font-size: 24px;
+			line-height: 38px;
+		}
+	}
+}
+
+/*=========================
+	Blog
+=========================*/
+.blog-cards {
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	gap: 48px;
+
+	.card {
+		width: 100%;
+		height: 400px;
+
+		border-radius: 54.119px;
+		border: 0.846px solid #FFF;
+		background: linear-gradient(89deg, rgba(255, 255, 255, 0.09) -61.11%, rgba(255, 255, 255, 0.00) 98.97%);
+		box-shadow: 0px 0px 16.912px 0px rgba(0, 0, 0, 0.06);
+	}
+
+	.col-12 {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.col-6 {
+		width: 100%;
+		max-width: calc(100% / 2 - 24px);
+	}
+}
