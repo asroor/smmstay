@@ -12,13 +12,51 @@ window.addEventListener('scroll', () => {
 	}
 });
 
-let i: number = 0
-const typingTxt = document.querySelectorAll('.typing') as NodeListOf<HTMLElement>
 
-function typeWriter() {
-	if (i < typingTxt.length) {
 
-	}
+
+
+const typingTxt = document.querySelectorAll('.typing') as NodeListOf<HTMLElement>;
+let speed: number = 50;
+
+function typeWriter(item: HTMLElement, text: string, callback: () => void) {
+  let i: number = 0;
+
+  function typing() {
+    if (i < text.length) {
+      item.innerHTML += text.charAt(i); // Har bir harfni qo'shib borish
+      i++;
+      setTimeout(typing, speed); // Har bir harfni yozish uchun qayta chaqiriladi
+    } else {
+      callback(); // Yozib tugagandan so'ng, callbackni chaqiramiz
+    }
+  }
+
+  typing(); // Matn yozishni boshlash
 }
 
-typeWriter()
+function startTyping() {
+  const items = Array.from(typingTxt); // NodeListni arrayga o'giramiz
+  let currentItemIndex = 0;
+
+  function processNextItem() {
+    if (currentItemIndex < items.length) {
+      const currentItem = items[currentItemIndex];
+      const text = currentItem.getAttribute('data-text') || ''; // Matnni 'data-text' orqali olamiz
+      typeWriter(currentItem, text, () => {
+        currentItemIndex++;
+        processNextItem(); // Navbatdagi elementni yozish
+      });
+    }
+  }
+
+  // Har bir elementning oldindan berilgan matnini o'chirish
+  items.forEach(item => {
+    item.setAttribute('data-text', item.innerHTML); // Asl matnni 'data-text' sifatida saqlab qo'yamiz
+    item.innerHTML = ''; // Matnni tozalaymiz
+  });
+
+  processNextItem(); // Typing jarayonini boshlash
+}
+
+startTyping();
