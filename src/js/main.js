@@ -12,3 +12,10 @@ window.addEventListener('scroll', () => {
         }
     }
 });
+let i = 0;
+const typingTxt = document.querySelectorAll('.typing');
+function typeWriter() {
+    if (i < typingTxt.length) {
+    }
+}
+typeWriter();

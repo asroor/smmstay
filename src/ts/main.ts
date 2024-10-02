@@ -11,3 +11,14 @@ window.addEventListener('scroll', () => {
 		}
 	}
 });
+
+let i: number = 0
+const typingTxt = document.querySelectorAll('.typing') as NodeListOf<HTMLElement>
+
+function typeWriter() {
+	if (i < typingTxt.length) {
+
+	}
+}
+
+typeWriter()
