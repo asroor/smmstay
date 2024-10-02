@@ -66,6 +66,10 @@ button {
 	cursor: pointer;
 }
 
+.bg-dark {
+	background-color: var(--bg-dark);
+}
+
 .wrapper {
 	overflow: hidden;
 }
@@ -105,6 +109,22 @@ button {
 
 .title-block {
 	text-align: center;
+	margin-bottom: 48px;
+
+	.btn-txt {
+		width: fit-content;
+		margin: 0 auto;
+		padding: 4px 16px;
+		border-radius: 48px;
+		border: 1px solid #282828;
+		margin-bottom: 12px;
+
+		span {
+			font-size: 16px;
+			font-weight: 600;
+			line-height: 26px;
+		}
+	}
 
 	h1 {
 		display: inline-block;
@@ -204,11 +224,12 @@ button {
 header {
 	padding: 30px 0;
 
-	.header-wrapper {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
+}
+
+.header-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .nav-links {
@@ -311,12 +332,116 @@ header {
 	}
 }
 
+/*==========================
+	Advantages
+==========================*/
+#advantages {
+	padding: 120px 0;
+}
+
+.advantage-blocks {
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+
+	.block {
+		width: 100%;
+		max-width: calc(100% / 2 - 2px);
+		padding: 2px;
+
+		&:first-child {
+			background: linear-gradient(308deg, rgba(94, 105, 127, 0.15) -9.26%, rgba(94, 105, 127, 0.00) 35.12%);
+		}
+
+		&:nth-child(2) {
+			background: linear-gradient(51deg, rgba(94, 105, 127, 0.15) -9.34%, rgba(94, 105, 127, 0.00) 35.39%);
+		}
+
+		&:nth-child(3) {
+			background: linear-gradient(233deg, rgba(94, 105, 127, 0.15) 0%, rgba(94, 105, 127, 0.00) 31.98%);
+		}
+
+		&:last-child {
+			background: linear-gradient(130deg, rgba(94, 105, 127, 0.15) 0%, rgba(94, 105, 127, 0.00) 34.43%);
+		}
+	}
+
+	.block-wrap {
+		display: flex;
+		align-items: flex-start;
+		padding: 32px 64px;
+		column-gap: 24px;
+		background-color: var(--bg-dark);
+		width: 100%;
+		height: 100%;
+
+		&:hover {
+			background: linear-gradient(0deg, rgba(255, 255, 255, 0.05) -66.4%, rgba(255, 255, 255, 0.00) 58.6%);
+		}
+	}
+
+}
+
+.block-icon {
+	display: flex;
+	width: 64px;
+	height: 64px;
+	padding: 16px;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	border-radius: 16px;
+	background: #FFF;
+}
+
+.block-about {
+	h2 {
+		color: #FFF;
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 100%;
+	}
+
+	p {
+		color: #5E697F;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 22px;
+		margin: 11px 0;
+	}
+
+	.chip {
+		border-radius: 48px;
+		background: #E6F0FF;
+		padding: 2px 10px;
+		font-size: 12px;
+		font-weight: 600;
+		line-height: 20px;
+	}
+
+	.chip-primary {
+		color: #0B5CD5;
+	}
+
+	.chip-D6850B {
+		background: #FFF5E6;
+		color: #D6850B;
+	}
+
+	.chip-038F65 {
+		color: #038F65;
+		background-color: #E9FFE3;
+	}
+}
+
 /*=========================
 	Blog
 =========================*/
 
 #blog {
-	padding: 50px 0;
+	padding: 120px 0;
+	// background: url('../images/blog-bg.svg') no-repeat;
+	// background-size: cover;
 }
 
 .blog-cards {
@@ -328,11 +453,14 @@ header {
 
 	.card {
 		width: 100%;
-		height: 400px;
-		border-radius: 54.119px;
-		background: linear-gradient(89deg, rgba(255, 255, 255, 0.09) -61.11%, rgba(255, 255, 255, 0.00) 98.97%);
+		background: linear-gradient(300deg, #FFF -206.93%, rgba(255, 255, 255, 0.00) 115.02%);
 		box-shadow: 0px 0px 16.912px 0px rgba(0, 0, 0, 0.06);
+		padding: 1px;
 		border-radius: 54.119px;
+
+		.bg-dark {
+			border-radius: 54.119px;
+		}
 	}
 
 	.col-12 {
@@ -346,22 +474,62 @@ header {
 	}
 }
 
+.card-wrap {
+	border-radius: 54.119px;
+	background: linear-gradient(89deg, rgba(255, 255, 255, 0.09) -61.11%, rgba(255, 255, 255, 0.00) 98.97%);
+	box-shadow: 0px 0px 16.912px 0px rgba(0, 0, 0, 0.06);
+}
+
 .card-img {
 	width: 100%;
 	max-height: 600px;
 	border-radius: 54.119px;
-	overflow: hidden;
+	background: linear-gradient(300deg, #FFF -206.93%, rgba(255, 255, 255, 0.00) 115.02%);
+	box-shadow: 0px 0px 16.912px 0px rgba(0, 0, 0, 0.06);
+	padding-bottom: .5px;
 
 	img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-
+		display: block;
+		border-radius: inherit;
 	}
 }
 
 .card-about {
+	display: block;
+	padding: 20px 60px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	column-gap: 20px;
+	color: #FFF;
+
+	h1,
+	h4 {
+		display: -webkit-box;
+		max-width: 100%;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	h1 {
+		font-size: 33.486px;
+		font-weight: 600;
+		line-height: 37.207px;
+		letter-spacing: -1.24px;
+	}
+
+	h4 {
+		color: #5E697F;
+		font-size: 15.221px;
+		font-weight: 400;
+		line-height: 25.368px;
+	}
+
+	.blog-btn {
+		flex-shrink: 0;
+	}
 }
