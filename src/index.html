@@ -80,13 +80,15 @@
 							<h3>5 Звезд!</h3>
 						</div>
 						<div class="user-profil">
-							<div class="user-img">
-								<img src="images/user2.webp" alt="user img" width="100%" height="100%">
-							</div>
-							<div class="user-about">
-								<p>Сабина Элмар</p>
-								<h3>+15.256</h3>
-								<p>Подписчиков</p>
+							<div class="user-profil__wrap">
+								<div class="user-img">
+									<img src="images/user2.webp" alt="user img" width="100%" height="100%">
+								</div>
+								<div class="user-about">
+									<p>Сабина Элмар</p>
+									<h3>+<span class="counter" data-target="15.256">0</span></h3>
+									<p>Подписчиков</p>
+								</div>
 							</div>
 						</div>
 						<div class="card-head">
@@ -101,8 +103,8 @@
 							</div>
 						</div>
 						<div class="user-messages">
-							<h4><span class="typing">Вау! Это лучший СММ Сервис!</span></h4>
-							<h4><span class="typing">Только взгляни!🌈</span></h4>
+							<h4><span class="typing" data-text="Вау! Это лучший СММ Сервис!"></span></h4>
+							<h4><span class="typing" data-text="Только взгляни!🌈"></span></h4>
 						</div>
 						<div class="card-chart">
 							<span class="chart-line"></span>
@@ -116,6 +118,7 @@
 								<img src="images/line-clip.svg" alt="line clip path" class="line-clip">
 								<img src="images/line-clip-liner.svg" alt="line clip path" class="clip-liner">
 							</div>
+								<h3 class="cursor-num">+2.464</h3>
 							<div class="cursor">
 								<img src="images/cursor.svg" alt="cursor icon">
 								<h3>Вы</h3>
@@ -160,7 +163,7 @@
 							<div class="count-num count-num--insta">
 								<div class="bg-dark">
 									<div class="count-wrap">
-										<span>70.015 / 92.000</span>
+										<span><span class="counting-num" num="70015">0</span> / 92.000</span>
 									</div>
 								</div>
 							</div>
@@ -195,7 +198,7 @@
 							<div class="count-num count-num--yt">
 								<div class="bg-dark">
 									<div class="count-wrap">
-										<span>13.433 / 22.222</span>
+										<span><span class="counting-num" num="13433">0</span> / 22.222</span>
 									</div>
 								</div>
 							</div>
@@ -205,7 +208,7 @@
 							<div class="count-num count-num--fb">
 								<div class="bg-dark">
 									<div class="count-wrap">
-										<span>915 / 2.000</span>
+										<span><span class="counting-num" num="915">0</span> / 2.000</span>
 									</div>
 								</div>
 							</div>
@@ -228,7 +231,7 @@
 							<div class="count-num count-num--tg">
 								<div class="bg-dark">
 									<div class="count-wrap">
-										<span>6.210 / 13.500</span>
+										<span><span class="counting-num" num="6210">0</span> / 13.500</span>
 									</div>
 								</div>
 							</div>

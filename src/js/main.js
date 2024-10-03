@@ -1,51 +1,110 @@
 "use strict";
-const loadLine = document.querySelectorAll('.load-line');
+const userCard = document.getElementById('user');
+const countNum = document.querySelectorAll('.counting-num');
+const counterSpeed = 150; // Adjusted speed control
 const process = document.getElementById('process');
-window.addEventListener('scroll', () => {
+const loadLine = document.querySelectorAll('.load-line');
+// Function to format the number with a period as a thousands separator
+const formatNumber = (num) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+};
+// Function to start counting animation
+const startCounting = (item) => {
+    const value = +item.getAttribute('num');
+    const data = parseInt(item.textContent.replace(/\./g, ''), 10) || 0; // Use textContent
+    const increment = Math.ceil(value / counterSpeed); // Calculate incremental steps
+    let currentValue = data;
+    const animate = () => {
+        if (currentValue < value) {
+            currentValue = Math.min(currentValue + increment, value);
+            item.textContent = formatNumber(currentValue); // Use textContent
+            requestAnimationFrame(animate); // Smooth animation control
+        }
+        else {
+            item.textContent = formatNumber(value); // Ensure final value is displayed correctly
+        }
+    };
+    animate(); // Start the animation
+};
+const onScroll = () => {
+    const scrollPosition = window.innerHeight - 400; // 400px offset
+    countNum.forEach(item => {
+        const blockPosition = item.getBoundingClientRect().top;
+        if (blockPosition < scrollPosition) {
+            startCounting(item);
+        }
+    });
     if (process) {
         const blockPosition = process.getBoundingClientRect().top;
-        const scrollPosition = window.innerHeight - 400; // 400px masofa
         if (blockPosition < scrollPosition) {
             loadLine.forEach(item => {
                 item.classList.add('active');
             });
-        }
-    }
-});
-const typingTxt = document.querySelectorAll('.typing');
-let speed = 50;
-function typeWriter(item, text, callback) {
-    let i = 0;
-    function typing() {
-        if (i < text.length) {
-            item.innerHTML += text.charAt(i); // Har bir harfni qo'shib borish
-            i++;
-            setTimeout(typing, speed); // Har bir harfni yozish uchun qayta chaqiriladi
-        }
-        else {
-            callback(); // Yozib tugagandan so'ng, callbackni chaqiramiz
-        }
-    }
-    typing(); // Matn yozishni boshlash
-}
-function startTyping() {
-    const items = Array.from(typingTxt); // NodeListni arrayga o'giramiz
-    let currentItemIndex = 0;
-    function processNextItem() {
-        if (currentItemIndex < items.length) {
-            const currentItem = items[currentItemIndex];
-            const text = currentItem.getAttribute('data-text') || ''; // Matnni 'data-text' orqali olamiz
-            typeWriter(currentItem, text, () => {
-                currentItemIndex++;
-                processNextItem(); // Navbatdagi elementni yozish
+            countNum.forEach(item => {
+                startCounting(item);
             });
         }
     }
-    // Har bir elementning oldindan berilgan matnini o'chirish
-    items.forEach(item => {
-        item.setAttribute('data-text', item.innerHTML); // Asl matnni 'data-text' sifatida saqlab qo'yamiz
-        item.innerHTML = ''; // Matnni tozalaymiz
-    });
-    processNextItem(); // Typing jarayonini boshlash
+};
+// Add scroll event listener
+window.addEventListener('scroll', onScroll);
+// TypeScript code
+const typingElements = userCard.querySelectorAll('.typing');
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+    return (rect.top <= windowHeight * 0.5 &&
+        rect.bottom >= windowHeight * 0.5);
 }
-startTyping();
+function typeText(element, text, delay) {
+    let index = 0;
+    element.textContent = ''; // Clear the text
+    const interval = setInterval(() => {
+        if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+        }
+        else {
+            clearInterval(interval);
+        }
+    }, delay);
+}
+function startTyping() {
+    if (userCard && isElementInViewport(userCard)) {
+        // Elementlarni DOMdan olish
+        const counters = document.querySelectorAll('.counter');
+        // Har bir counter uchun funksiyani boshlash
+        counters.forEach((counter) => {
+            const updateCounter = () => {
+                // Atributdan olingan qiymatni raqamga o'girish
+                const target = parseFloat(counter.getAttribute('data-target').replace('+', ''));
+                const count = parseFloat(counter.innerText);
+                // O'sish miqdorini hisoblash
+                const increment = target / 800;
+                // Maqsadga yetguncha raqamni oshirish
+                if (count < target) {
+                    counter.innerText = (count + increment).toFixed(3); // Kasr sonni 3 xonali qilish
+                    setTimeout(updateCounter, 1); // 1 ms kutish
+                }
+                else {
+                    counter.innerText = target.toFixed(3); // Maqsad raqamni to'g'ri formatlash
+                }
+            };
+            // Funksiyani ishga tushirish
+            updateCounter();
+        });
+        typingElements.forEach((element, index) => {
+            const text = element.getAttribute('data-text');
+            if (text) {
+                setTimeout(() => {
+                    typeText(element, text, 100); // Adjust delay as needed
+                }, index * 2500); // Delay between texts
+            }
+        });
+        // Remove the scroll event listener after typing to prevent it from triggering again
+        window.removeEventListener('scroll', startTyping);
+    }
+}
+// Add scroll and load event listeners
+window.addEventListener('scroll', startTyping);
+window.addEventListener('load', startTyping); // Initial check on page load
