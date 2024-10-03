@@ -881,7 +881,6 @@ header {
 	align-items: flex-start;
 	background-color: white;
 	border-radius: 50px;
-	overflow: hidden;
 
 	span {
 		width: 0;
@@ -1112,8 +1111,17 @@ header {
 
 #blog {
 	padding: 120px 0;
-	// background: url('../images/test.webp') no-repeat;
-	// background-size: cover;
+	position: relative;
+
+	.blog-bg {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 1920px;
+		z-index: -1;
+		mix-blend-mode: overlay;
+	}
 }
 
 .blog-cards {
@@ -1212,7 +1220,18 @@ header {
 ==================*/
 
 footer {
-	margin-bottom: 120px;
+	position: relative;
+	padding-bottom: 120px;
+
+	.footer-bg {
+		width: 1920px;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		position: absolute;
+		mix-blend-mode: overlay;
+		z-index: -1;
+	}
 }
 
 
