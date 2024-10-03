@@ -1,0 +1,44 @@
+<svg width="1390" height="492" viewBox="0 0 1390 492" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_b_2081_360)">
+<g clip-path="url(#clip0_2081_360)">
+<rect width="1390" height="492" rx="44" fill="#0D0608" fill-opacity="0.8"/>
+<g style="mix-blend-mode:screen" opacity="0.19" filter="url(#filter1_f_2081_360)">
+<rect x="-81" y="-827" width="1471" height="942" rx="471" fill="#FF276C"/>
+</g>
+<g style="mix-blend-mode:screen" opacity="0.2" filter="url(#filter2_f_2081_360)">
+<rect x="163" y="-756" width="983" height="802" rx="401" fill="#FF276C"/>
+</g>
+</g>
+<rect x="1" y="1" width="1388" height="490" rx="43" stroke="url(#paint0_radial_2081_360)" stroke-width="2" style="mix-blend-mode:overlay"/>
+<rect x="1" y="1" width="1388" height="490" rx="43" stroke="url(#paint1_radial_2081_360)" stroke-width="2" style="mix-blend-mode:overlay"/>
+</g>
+<defs>
+<filter id="filter0_b_2081_360" x="-555" y="-555" width="2500" height="1602" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="277.5"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_2081_360"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_2081_360" result="shape"/>
+</filter>
+<filter id="filter1_f_2081_360" x="-436" y="-1182" width="2181" height="1652" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="177.5" result="effect1_foregroundBlur_2081_360"/>
+</filter>
+<filter id="filter2_f_2081_360" x="8" y="-911" width="1293" height="1112" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="77.5" result="effect1_foregroundBlur_2081_360"/>
+</filter>
+<radialGradient id="paint0_radial_2081_360" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(695) rotate(90) scale(473.5 716.401)">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="paint1_radial_2081_360" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(695) rotate(90) scale(473.5 716.401)">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip0_2081_360">
+<rect width="1390" height="492" rx="44" fill="white"/>
+</clipPath>
+</defs>
+</svg>

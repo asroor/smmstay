@@ -649,6 +649,24 @@ header {
 	}
 }
 
+.user-process--bg {
+	position: relative;
+	width: 100%;
+	background: url('../images/home-detal1.svg')no-repeat, url('../images/home-detal2.svg') no-repeat;
+	background-position: center 70%, center 70%;
+	background-size: contain, contain;
+
+	.overly {
+		position: absolute;
+		top: 510px;
+		left: 50%;
+		transform: translate(calc(-50% - 130px));
+		width: 2432px;
+		mix-blend-mode: overlay;
+		z-index: -1;
+	}
+}
+
 /*========================
 	Process
 ========================*/
@@ -661,6 +679,15 @@ header {
 	padding-top: 55px;
 	display: flex;
 	align-items: center;
+	border-radius: 44px;
+	background: url('../images/processbg-1.svg') no-repeat;
+	background-position: center top;
+	background-size: 100%;
+	backdrop-filter: blur(277.5px);
+
+	max-width: 1390px;
+	padding: 55px 90px;
+	margin: 0 auto;
 }
 
 .process-about {
@@ -1196,7 +1223,7 @@ footer {
 @media (max-width:1300px) {
 	.container {
 		max-width: 1050px;
-		border: 1px solid white;
+		// border: 1px solid white;
 	}
 
 	.social-line--fb,
