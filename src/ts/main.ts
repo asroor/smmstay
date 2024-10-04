@@ -137,3 +137,23 @@ function startTyping() {
 // Add scroll and load event listeners
 window.addEventListener('scroll', startTyping);
 window.addEventListener('load', startTyping); // Initial check on page load
+
+const closeAll = document.querySelectorAll('.close-all') as NodeListOf<HTMLElement>
+const sidebarBtn = document.querySelector('.sidebar-btn') as HTMLButtonElement
+const closeBg = document.querySelector('.close-bg') as HTMLElement
+const sidebar = document.querySelector('.sidebar') as HTMLElement
+const body = document.querySelector('body') as HTMLBodyElement
+
+sidebarBtn?.addEventListener('click', () => {
+	body.style.overflow = 'hidden'
+	closeBg.classList.add('active')
+	sidebar.classList.add('show')
+})
+
+closeAll?.forEach(item => {
+	item.addEventListener('click', () => {
+		closeBg.classList.remove('active')
+		sidebar.classList.remove('show')
+		body.style.overflow = 'auto'
+	})
+})

@@ -108,3 +108,20 @@ function startTyping() {
 // Add scroll and load event listeners
 window.addEventListener('scroll', startTyping);
 window.addEventListener('load', startTyping); // Initial check on page load
+const closeAll = document.querySelectorAll('.close-all');
+const sidebarBtn = document.querySelector('.sidebar-btn');
+const closeBg = document.querySelector('.close-bg');
+const sidebar = document.querySelector('.sidebar');
+const body = document.querySelector('body');
+sidebarBtn === null || sidebarBtn === void 0 ? void 0 : sidebarBtn.addEventListener('click', () => {
+    body.style.overflow = 'hidden';
+    closeBg.classList.add('active');
+    sidebar.classList.add('show');
+});
+closeAll === null || closeAll === void 0 ? void 0 : closeAll.forEach(item => {
+    item.addEventListener('click', () => {
+        closeBg.classList.remove('active');
+        sidebar.classList.remove('show');
+        body.style.overflow = 'auto';
+    });
+});
