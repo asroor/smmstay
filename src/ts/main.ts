@@ -1,41 +1,42 @@
-const userCard = document.getElementById('user') as HTMLElement
+const userCard = document.getElementById('user') as HTMLElement;
 const countNum = document.querySelectorAll('.counting-num') as NodeListOf<HTMLSpanElement>;
-const counterSpeed = 150; // Adjusted speed control
+const counterSpeed = 150; // Скорость анимации подсчета
 const process = document.getElementById('process') as HTMLElement;
 const loadLine = document.querySelectorAll('.load-line');
 
-// Function to format the number with a period as a thousands separator
+// Функция форматирования числа с точкой в качестве разделителя тысяч
 const formatNumber = (num: number) => {
 	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 };
 
-// Function to start counting animation
+// Функция запуска анимации подсчета
 const startCounting = (item: HTMLSpanElement) => {
-	const value = +item.getAttribute('num')!;
-	const data = parseInt(item.textContent!.replace(/\./g, ''), 10) || 0; // Use textContent
-	const increment = Math.ceil(value / counterSpeed); // Calculate incremental steps
+	const value = +item.getAttribute('num')!; // Получаем целевое значение из атрибута
+	const data = parseInt(item.textContent!.replace(/\./g, ''), 10) || 0; // Текущее значение из текстового содержимого элемента
+	const increment = Math.ceil(value / counterSpeed); // Рассчитываем шаг увеличения
 
 	let currentValue = data;
 	const animate = () => {
 		if (currentValue < value) {
-			currentValue = Math.min(currentValue + increment, value);
-			item.textContent = formatNumber(currentValue); // Use textContent
-			requestAnimationFrame(animate); // Smooth animation control
+			currentValue = Math.min(currentValue + increment, value); // Увеличиваем текущее значение до целевого
+			item.textContent = formatNumber(currentValue); // Форматируем и обновляем текст элемента
+			requestAnimationFrame(animate); // Плавное обновление анимации
 		} else {
-			item.textContent = formatNumber(value); // Ensure final value is displayed correctly
+			item.textContent = formatNumber(value); // Убедиться, что финальное значение отображается правильно
 		}
 	};
 
-	animate(); // Start the animation
+	animate(); // Запускаем анимацию
 };
 
+// Функция, срабатывающая при прокрутке страницы
 const onScroll = () => {
-	const scrollPosition: number = window.innerHeight - 400; // 400px offset
+	const scrollPosition: number = window.innerHeight - 400; // Смещение на 400px от нижней границы окна
 
 	countNum.forEach(item => {
 		const blockPosition: number = item.getBoundingClientRect().top;
 		if (blockPosition < scrollPosition) {
-			startCounting(item);
+			startCounting(item); // Запуск анимации для каждого элемента, когда он попадает в зону видимости
 		}
 	});
 
@@ -43,32 +44,23 @@ const onScroll = () => {
 		const blockPosition: number = process.getBoundingClientRect().top;
 		if (blockPosition < scrollPosition) {
 			loadLine.forEach(item => {
-				item.classList.add('active');
+				item.classList.add('active'); // Добавляем класс активности для линий загрузки
 			});
 			countNum.forEach(item => {
-				startCounting(item);
+				startCounting(item); // Запуск анимации счетчика
 			});
 		}
 	}
 };
 
-// Add scroll event listener
+// Добавление слушателя события прокрутки
 window.addEventListener('scroll', onScroll);
 
 
-
-
-
-
-
-
-
-
-
-
-// TypeScript code
+// Код TypeScript для анимации печати текста
 const typingElements = userCard.querySelectorAll('.typing') as NodeListOf<HTMLElement>;
 
+// Функция проверки, находится ли элемент в зоне видимости
 function isElementInViewport(el: HTMLElement): boolean {
 	const rect = el.getBoundingClientRect();
 	const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
@@ -78,82 +70,88 @@ function isElementInViewport(el: HTMLElement): boolean {
 	);
 }
 
+// Функция для анимации печати текста с задержкой
 function typeText(element: HTMLElement, text: string, delay: number) {
 	let index = 0;
-	element.textContent = ''; // Clear the text
+	element.textContent = ''; // Очищаем текст
 
 	const interval = setInterval(() => {
 		if (index < text.length) {
-			element.textContent += text.charAt(index);
+			element.textContent += text.charAt(index); // Добавляем букву к тексту
 			index++;
 		} else {
-			clearInterval(interval);
+			clearInterval(interval); // Останавливаем анимацию, когда весь текст напечатан
 		}
 	}, delay);
 }
 
+// Функция для запуска анимации печати текста
 function startTyping() {
-
 	if (userCard && isElementInViewport(userCard)) {
-		// Elementlarni DOMdan olish
+		// Получаем элементы счетчиков из DOM
 		const counters: NodeListOf<HTMLElement> = document.querySelectorAll('.counter');
 
-		// Har bir counter uchun funksiyani boshlash
+		// Для каждого счетчика запускаем обновление
 		counters.forEach((counter: HTMLElement) => {
 			const updateCounter = (): void => {
-				// Atributdan olingan qiymatni raqamga o'girish
+				// Преобразуем значение из атрибута в число
 				const target: number = parseFloat(counter.getAttribute('data-target')!.replace('+', ''));
 				const count: number = parseFloat(counter.innerText);
 
-				// O'sish miqdorini hisoblash
+				// Рассчитываем шаг увеличения
 				const increment: number = target / 800;
 
-				// Maqsadga yetguncha raqamni oshirish
+				// Увеличиваем значение до целевого
 				if (count < target) {
-					counter.innerText = (count + increment).toFixed(3); // Kasr sonni 3 xonali qilish
-					setTimeout(updateCounter, 1); // 1 ms kutish
+					counter.innerText = (count + increment).toFixed(3); // Округляем до трех знаков после запятой
+					setTimeout(updateCounter, 1); // Повторяем через 1 мс
 				} else {
-					counter.innerText = target.toFixed(3); // Maqsad raqamni to'g'ri formatlash
+					counter.innerText = target.toFixed(3); // Окончательное значение
 				}
 			};
 
-			// Funksiyani ishga tushirish
+			// Запускаем обновление счетчика
 			updateCounter();
 		});
 
+		// Запуск анимации печати текста для каждого элемента
 		typingElements.forEach((element, index) => {
 			const text = element.getAttribute('data-text');
 			if (text) {
 				setTimeout(() => {
-					typeText(element, text, 100); // Adjust delay as needed
-				}, index * 2500); // Delay between texts
+					typeText(element, text, 100); // Настроить задержку при необходимости
+				}, index * 2500); // Задержка между текстами
 			}
 		});
-		// Remove the scroll event listener after typing to prevent it from triggering again
+
+		// Удаляем слушатель события прокрутки после выполнения анимации
 		window.removeEventListener('scroll', startTyping);
 	}
 }
 
-// Add scroll and load event listeners
+// Добавление слушателей событий прокрутки и загрузки страницы
 window.addEventListener('scroll', startTyping);
-window.addEventListener('load', startTyping); // Initial check on page load
+window.addEventListener('load', startTyping); // Проверка при загрузке страницы
 
-const closeAll = document.querySelectorAll('.close-all') as NodeListOf<HTMLElement>
-const sidebarBtn = document.querySelector('.sidebar-btn') as HTMLButtonElement
-const closeBg = document.querySelector('.close-bg') as HTMLElement
-const sidebar = document.querySelector('.sidebar') as HTMLElement
-const body = document.querySelector('body') as HTMLBodyElement
+// Логика работы боковой панели
+const closeAll = document.querySelectorAll('.close-all') as NodeListOf<HTMLElement>;
+const sidebarBtn = document.querySelector('.sidebar-btn') as HTMLButtonElement;
+const closeBg = document.querySelector('.close-bg') as HTMLElement;
+const sidebar = document.querySelector('.sidebar') as HTMLElement;
+const body = document.querySelector('body') as HTMLBodyElement;
 
+// Событие для кнопки открытия боковой панели
 sidebarBtn?.addEventListener('click', () => {
-	body.style.overflow = 'hidden'
-	closeBg.classList.add('active')
-	sidebar.classList.add('show')
-})
+	body.style.overflow = 'hidden'; // Отключаем прокрутку страницы
+	closeBg.classList.add('active'); // Добавляем фоновый активный класс
+	sidebar.classList.add('show'); // Показываем боковую панель
+});
 
+// Событие для закрытия боковой панели
 closeAll?.forEach(item => {
 	item.addEventListener('click', () => {
-		closeBg.classList.remove('active')
-		sidebar.classList.remove('show')
-		body.style.overflow = 'auto'
-	})
-})
+		closeBg.classList.remove('active'); // Убираем активный фон
+		sidebar.classList.remove('show'); // Скрываем боковую панель
+		body.style.overflow = 'auto'; // Восстанавливаем прокрутку страницы
+	});
+});

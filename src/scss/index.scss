@@ -13,6 +13,12 @@ Primary user: smmstay
 2.	Common styles
 3.	Header
 4.	Home
+5.	User card
+6.	Process
+7.	network
+8.	Advantages
+9.	Blogs
+10.	Footer
 *.	Responsive
 ------------------------------------*/
 
@@ -1371,6 +1377,7 @@ footer {
 	.navbar-left .sidebar-btn {
 		display: block;
 	}
+
 	.user-process--bg {
 		background-size: 1450px;
 		background-position: center 58%, center 44%;
@@ -1509,6 +1516,7 @@ footer {
 		width: 25px;
 		height: 25px;
 	}
+
 	.user-process--bg {
 		background-position: center 50%, center 65%;
 		background-size: cover, cover;
@@ -1612,9 +1620,11 @@ footer {
 	#user {
 		padding: 0;
 	}
+
 	.home-wrapper h1 {
 		font-size: 40px;
 	}
+
 	.home-wrapper {
 		padding: 60px 0 94px 0;
 	}
@@ -1732,6 +1742,7 @@ footer {
 	.sidebar .sidebar-head {
 		padding: 25px;
 	}
+
 	.networks::after {
 		background: linear-gradient(260deg, #0d0608 34.79%, rgba(13, 6, 8, 0) 70%);
 	}
@@ -1777,6 +1788,7 @@ footer {
 		width: 120px;
 		display: flex;
 		align-items: center;
+
 		img {
 			width: 100%;
 		}
@@ -1836,6 +1848,7 @@ footer {
 		font-size: 30px;
 		line-height: 140%;
 	}
+
 	.home-wrapper {
 		padding: 120px 0 94px 0;
 	}
@@ -1862,13 +1875,18 @@ footer {
 	footer {
 		padding-bottom: 25px;
 	}
+
 	.eff-txt::before {
 		top: calc(50% + 1.2px);
 	}
-	.eff-txt .detal:first-child, .eff-txt .detal:last-child {
+
+	.eff-txt .detal:first-child,
+	.eff-txt .detal:last-child {
 		top: -1.5px;
 	}
-	.eff-txt .detal:nth-child(2), .eff-txt .detal:nth-child(3) {
+
+	.eff-txt .detal:nth-child(2),
+	.eff-txt .detal:nth-child(3) {
 		bottom: -2.5px;
 	}
 }
@@ -1894,15 +1912,16 @@ footer {
 		font-size: 30px;
 		line-height: 120%;
 	}
-	
+
 	.home-btns {
 		column-gap: 15px;
 	}
-	
+
 	.networks .networks-slide img {
 		width: calc(100% + 270px);
 	}
 }
+
 @media (max-width:338px) {
 	.home-wrapper h1 {
 		font-size: 25px;
